@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1d4350, #a43931);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 50px;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .stopwatch {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            border: 8px solid #ffffff55;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #00000022;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hand {
+            position: absolute;
+            width: 4px;
+            height: 90px;
+            background: #fff;
+            top: 30px;
+            left: 50%;
+            transform-origin: bottom center;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+        }
+
+        #time {
+            font-size: 2.2rem;
+            z-index: 1;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            background-color: #ffffff22;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #ffffff55;
+        }
+
+        #laps {
+            width: 220px;
+            max-height: 150px;
+            overflow-y: auto;
+            background: #ffffff11;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        #laps p {
+            margin: 5px 0;
+            border-bottom: 1px solid #ffffff33;
+            padding-bottom: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Stopwatch</h1>
+
+    <div class="stopwatch">
+        <div class="hand" id="hand"></div>
+        <div id="time">00:00</div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="startClock()">Start</button>
+        <button onclick="stopClock()">Stop</button>
+        <button onclick="resetClock()">Reset</button>
+        <button onclick="lapTime()">Lap</button>
+    </div>
+
+    <div id="laps"></div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
