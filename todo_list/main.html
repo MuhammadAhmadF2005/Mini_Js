@@ -2,18 +2,98 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO list</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --item-bg: #f1f1f1;
+        }
+
+        .dark {
+            --bg: #1e1e1e;
+            --text: #ffffff;
+            --item-bg: #333;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #itemInput {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        #items {
+            margin-top: 20px;
+        }
+
+        .item {
+            background-color: var(--item-bg);
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .edit-input {
+            width: 150px;
+            font-size: 14px;
+        }
+
+        #themeToggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>TODO list</h1>
-    <h2>Items</h2>
+    <button id="themeToggle">🌙 Toggle Theme</button>
+    <h1>📝 TODO List</h1>
+
+    <input id="itemInput" type="text" placeholder="Add an item" />
+    <button onclick="addItem()">Add</button>
+
     <div id="items"></div>
-    <input id="itemInput" type="text" placeholder="Add an item">
-    <button onclick="addItem()">Add item</button>
-    <script src="index.js"></script>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
