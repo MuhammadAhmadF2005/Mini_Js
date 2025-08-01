@@ -3,13 +3,19 @@ const storageKey = 'todo_items';
 
 const itemsDiv = document.getElementById("items");
 const input = document.getElementById("itemInput");
+const addBtn = document.getElementById("addBtn");
 const themeToggle = document.getElementById("themeToggle");
 
-function loadItems() {
-    const oldItems = localStorage.getItem(storageKey);
-    if (oldItems) items = JSON.parse(oldItems);
+// Load items and theme on DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+    const stored = localStorage.getItem(storageKey);
+    if (stored) items = JSON.parse(stored);
+
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) document.body.classList.add('dark');
+
     renderItems();
-}
+});
 
 function saveItems() {
     localStorage.setItem(storageKey, JSON.stringify(items));
@@ -39,10 +45,9 @@ function toggleComplete(index) {
     saveItems();
 }
 
-function enableEdit(index) {
-    const item = items[index];
-    const newText = prompt("Edit item:", item.text);
-    if (newText !== null) {
+function editItem(index) {
+    const newText = prompt("Edit item:", items[index].text);
+    if (newText !== null && newText.trim() !== "") {
         items[index].text = newText.trim();
         renderItems();
         saveItems();
@@ -72,7 +77,7 @@ function renderItems() {
 
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
-        editBtn.onclick = () => enableEdit(index);
+        editBtn.onclick = () => editItem(index);
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
@@ -86,12 +91,15 @@ function renderItems() {
     });
 }
 
-input.addEventListener("keydown", function (e) {
+// Add item on Enter key
+input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") addItem();
 });
 
-themeToggle.onclick = () => {
-    document.body.classList.toggle("dark");
-};
+addBtn.addEventListener("click", addItem);
 
-document.addEventListener("DOMContentLoaded", loadItems);
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+});

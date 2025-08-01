@@ -5,17 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO List</title>
-    <link rel="stylesheet" href="style.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-            transition: background 0.3s, color 0.3s;
-        }
-
         :root {
             --bg: #ffffff;
             --text: #000000;
@@ -26,6 +16,15 @@
             --bg: #1e1e1e;
             --text: #ffffff;
             --item-bg: #333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            transition: background 0.3s, color 0.3s;
         }
 
         h1 {
@@ -70,11 +69,6 @@
             opacity: 0.6;
         }
 
-        .edit-input {
-            width: 150px;
-            font-size: 14px;
-        }
-
         #themeToggle {
             position: absolute;
             top: 20px;
@@ -89,11 +83,11 @@
     <h1>📝 TODO List</h1>
 
     <input id="itemInput" type="text" placeholder="Add an item" />
-    <button onclick="addItem()">Add</button>
+    <button id="addBtn">Add</button>
 
     <div id="items"></div>
 
-    <script src="main.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
